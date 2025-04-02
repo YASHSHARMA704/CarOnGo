@@ -50,4 +50,10 @@ public class UserAccount {
         ADMIN,BUYER,SELLER
     }
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "userAccount")
+    private ProfilePicture profilePicture;
+
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "userAccount",fetch = FetchType.EAGER)
+    private UserProfile userProfile;
+
 }
