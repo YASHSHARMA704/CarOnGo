@@ -44,7 +44,7 @@ public class UserAccount {
     private LocalDate registrationDate = LocalDate.now();
 
     @Column(name = "is_verified",nullable = false,columnDefinition = "BOOLEAN DEFAULT FALSE")
-    private boolean isVerified = false;
+    private Boolean isVerified = false;
 
     public enum Role{
         ADMIN,BUYER,SELLER
@@ -55,5 +55,8 @@ public class UserAccount {
 
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "userAccount",fetch = FetchType.EAGER)
     private UserProfile userProfile;
+
+    @OneToMany(mappedBy = "userAccount", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private CarListing carListing;
 
 }
